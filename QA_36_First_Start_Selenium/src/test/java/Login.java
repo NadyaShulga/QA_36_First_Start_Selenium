@@ -50,21 +50,20 @@ public class Login {
          WebElement email = wd.findElement(By.name("email"));
          email.click();
          email.clear();
-         email.sendKeys("shulgaqa@gmail.com");
+         email.sendKeys("teddy1@gmail.com");
 
         //find email + click + clear + type
         WebElement password = wd.findElement(By.name("password"));
         password.click();
         password.clear();
-        password.sendKeys("Sh$30091983");
+        password.sendKeys("Teddy1206$");
 
         //submit form (click "login")
         //find button login + click
         List<WebElement> buttons = wd.findElements(By.tagName("button"));
         WebElement buttonLogin = buttons.get(0);
         buttonLogin.click();
-
-
+        
         Assert.assertEquals("", "");
         //ac == exp
     }
@@ -72,7 +71,21 @@ public class Login {
     //homework
     @Test
     public void registrationSuccess(){
+        WebElement login=wd.findElement(By.linkText("LOGIN"));
+        login.click();
+        WebElement email = wd.findElement(By.name("email"));
+        email.click();
+        email.clear();
+        email.sendKeys("teddy1@gmail.com");
 
+        WebElement password = wd.findElement(By.name("password"));
+        password.click();
+        password.clear();
+        password.sendKeys("Teddy1206$");
+
+        List<WebElement> buttons = wd.findElements (By.tagName("button"));
+        WebElement buttonRegistration = buttons.get(1);
+        buttonRegistration.click();
     }
 
     @AfterMethod
