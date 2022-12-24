@@ -69,29 +69,76 @@ public class Login {
     }
 
     //homework
+//    @Test
+//    public void registrationSuccess(){
+//        WebElement login=wd.findElement(By.linkText("LOGIN"));
+//        login.click();
+//        WebElement email = wd.findElement(By.name("email"));
+//        email.click();
+//        email.clear();
+//        email.sendKeys("teddy1@gmail.com");
+//
+//        WebElement password = wd.findElement(By.name("password"));
+//        password.click();
+//        password.clear();
+//        password.sendKeys("Teddy1206$");
+//
+//        List<WebElement> buttons = wd.findElements (By.tagName("button"));
+//        WebElement buttonRegistration = buttons.get(1);
+//        buttonRegistration.click();
+//    }
+
     @Test
-    public void registrationSuccess(){
-        WebElement login=wd.findElement(By.linkText("LOGIN"));
-        login.click();
-        WebElement email = wd.findElement(By.name("email"));
+    public void ccslocatrstest() {
+
+        wd.findElement(By.linkText("LOGIN")).click();
+        WebElement div = wd.findElement(By.tagName("div"));
+        WebElement headName = wd.findElement(By.tagName("h1"));
+        WebElement form = wd.findElement(By.tagName("form"));
+
+        WebElement root = wd.findElement(By.cssSelector("#root")); //id
+        WebElement container = wd.findElement(By.cssSelector(".container")); //class
+        WebElement el = wd.findElement(By.cssSelector("div#root.container"));
+        WebElement el1 = wd.findElement(By.cssSelector(".active")); //class
+
+        WebElement el3 = wd.findElement(By.cssSelector("[placeholder ^='Pass']")); //starts
+        WebElement el4 = wd.findElement(By.cssSelector("[placeholder *='ass']")); //contains
+        WebElement el5 = wd.findElement(By.cssSelector("[placeholder $='ord']")); //ends
+
+        WebElement el6 = wd.findElement(By.cssSelector("[id='root']"));
+        WebElement el7 = wd.findElement(By.cssSelector("[class='container']"));
+        WebElement head3 = wd.findElement(By.cssSelector("[href='/login']"));
+        WebElement el8 = wd.findElement(By.cssSelector("[name='email']"));
+        WebElement el9 = wd.findElement(By.cssSelector("[name='login']"));
+
+       // WebElement el10 = wd.findElement(By.cssSelector("[name='registration']"));
+        //el10.click();
+
+       // WebElement button_reg = wd.findElement(By.cssSelector("form :last-child"));
+       // button_reg.click();
+
+        WebElement email = wd.findElement(By.cssSelector("form :first-child"));
         email.click();
         email.clear();
         email.sendKeys("teddy1@gmail.com");
 
-        WebElement password = wd.findElement(By.name("password"));
-        password.click();
-        password.clear();
-        password.sendKeys("Teddy1206$");
+         WebElement el12 = wd.findElement(By.cssSelector("form :nth-child(2)"));
+         el12.click();
+         el12.clear();
+         el12.sendKeys("Teddy1206$");
 
-        List<WebElement> buttons = wd.findElements (By.tagName("button"));
-        WebElement buttonRegistration = buttons.get(1);
-        buttonRegistration.click();
-    }
+        WebElement button_log = wd.findElement(By.cssSelector("form :nth-child(4)"));
+        button_log.click();
 
-    @AfterMethod
-    public void postCondition(){
-        //close browser
-       // wd.quit();
+
+
+
+
+
+      //  @AfterMethod
+      //  public void postCondition () {
+            //close browser
+            // wd.quit();
+        }
     }
-}
 
