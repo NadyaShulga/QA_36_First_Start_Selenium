@@ -99,7 +99,8 @@ public class Login {
         WebElement root = wd.findElement(By.cssSelector("#root")); //id
         WebElement container = wd.findElement(By.cssSelector(".container")); //class
         WebElement el = wd.findElement(By.cssSelector("div#root.container"));
-        WebElement el1 = wd.findElement(By.cssSelector(".active")); //class
+        WebElement el1 = wd.findElement(By.cssSelector("div[id='root'][class='container']"));
+        WebElement el2 = wd.findElement(By.cssSelector(".active")); //class
 
         WebElement el3 = wd.findElement(By.cssSelector("[placeholder ^='Pass']")); //starts
         WebElement el4 = wd.findElement(By.cssSelector("[placeholder *='ass']")); //contains
@@ -107,9 +108,15 @@ public class Login {
 
         WebElement el6 = wd.findElement(By.cssSelector("[id='root']"));
         WebElement el7 = wd.findElement(By.cssSelector("[class='container']"));
+
         WebElement head3 = wd.findElement(By.cssSelector("[href='/login']"));
+        WebElement head4 = wd.findElement(By.cssSelector("a[href='/login']"));
+
         WebElement el8 = wd.findElement(By.cssSelector("[name='email']"));
-        WebElement el9 = wd.findElement(By.cssSelector("[name='login']"));
+        WebElement el9 = wd.findElement(By.cssSelector("input[name='email']"));
+
+        WebElement el10 = wd.findElement(By.cssSelector("[name='login']"));
+        WebElement el11 = wd.findElement(By.cssSelector("button[name='login']"));
 
        // WebElement el10 = wd.findElement(By.cssSelector("[name='registration']"));
         //el10.click();
@@ -129,10 +136,6 @@ public class Login {
 
         WebElement button_log = wd.findElement(By.cssSelector("form :nth-child(4)"));
         button_log.click();
-
-
-
-
 
 
       //  @AfterMethod
