@@ -15,7 +15,44 @@ public class Index {
     public void start() {
         wd = new ChromeDriver();
         wd.get("file:///C:/Users/shulg/Downloads/index.html");
-        wd.manage().window();
+        wd.manage().window().maximize();
+    }
+    @Test
+    public void itemsTests(){
+        // find Item1 & click() ===> assert that "div-alert" contains message  "Clicked by Item 1"
+        WebElement item1 = wd.findElement(By.cssSelector("a[href='#item1']"));
+        item1.click();
+        WebElement alert = wd.findElement(By.cssSelector("#alert"));
+        String text = alert.getText();
+        Assert.assertTrue(text.contains("Clicked by Item 1"));
+
+        // find Item3 & click() ===> assert that "div-alert" contains message  "Clicked by Item 3"
+        WebElement item3 = wd.findElement(By.cssSelector("a[href='#item3']"));
+        item3.click();
+        WebElement alert1= wd.findElement(By.cssSelector("#alert"));
+        String text1 = alert1.getText();
+        Assert.assertTrue(text1.contains("Clicked by Item 3"));
+    }
+    @Test
+    public void formTests(){
+        WebElement name = wd.findElement(By.cssSelector("input[name='name']"));
+        name.click();
+        name.clear();
+        name.sendKeys("Nadya");
+        // fill name & fill surename & click send
+        WebElement surname = wd.findElement(By.cssSelector("input[placeholder='Type your surename']"));
+        surname.click();
+        surname.clear();
+        surname.sendKeys("Shulga");
+        // Assert that "div-alert" contains text with name + surename
+        WebElement button = wd.findElement(By.cssSelector("button[class='btn']"));
+        button.click();
+        WebElement alert3= wd.findElement(By.cssSelector("#alert"));
+        String text3 = alert3.getText();
+        Assert.assertTrue(text3.contains("Nadya Shulga"));
+
+        //HAPPY END!!!! :)))))
+
     }
 
     @Test
