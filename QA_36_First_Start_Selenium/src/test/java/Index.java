@@ -1,11 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class Index {
@@ -14,20 +14,25 @@ public class Index {
     @BeforeMethod
     public void start() {
         wd = new ChromeDriver();
+        //ChromeOptions chromeOptions = new ChromeOptions();
+        //chromeOptions.addArguments("--lang=he-IL");
         wd.get("file:///C:/Users/shulg/Downloads/index.html");
         wd.manage().window().maximize();
     }
     @Test
     public void itemsTests(){
         // find Item1 & click() ===> assert that "div-alert" contains message  "Clicked by Item 1"
-        WebElement item1 = wd.findElement(By.cssSelector("a[href='#item1']"));
+        WebElement item1 = wd.findElement(By.cssSelector("a[href='#item1']")); //li:first-child
         item1.click();
+        //wd.findElement(By.cssSelector("a[href='#item1']")).click();
+
         WebElement alert = wd.findElement(By.cssSelector("#alert"));
         String text = alert.getText();
         Assert.assertTrue(text.contains("Clicked by Item 1"));
+        //Assert.assertEquals(text,"Clicked by Item 1");
 
         // find Item3 & click() ===> assert that "div-alert" contains message  "Clicked by Item 3"
-        WebElement item3 = wd.findElement(By.cssSelector("a[href='#item3']"));
+        WebElement item3 = wd.findElement(By.cssSelector("a[href='#item3']")); //x.path("//li[3]")
         item3.click();
         WebElement alert1= wd.findElement(By.cssSelector("#alert"));
         String text1 = alert1.getText();
@@ -35,21 +40,28 @@ public class Index {
     }
     @Test
     public void formTests(){
-        WebElement name = wd.findElement(By.cssSelector("input[name='name']"));
+        WebElement name = wd.findElement(By.cssSelector("input[name='name']")); //xpath("input[1]")
         name.click();
         name.clear();
-        name.sendKeys("Nadya");
+        name.sendKeys("נדיה");
         // fill name & fill surename & click send
-        WebElement surname = wd.findElement(By.cssSelector("input[placeholder='Type your surename']"));
+        //System.out.println(name);
+
+        String inputText = name.getAttribute("value");
+
+        WebElement surname = wd.findElement(By.cssSelector("input[placeholder='Type your surename']"));//xpath("input[2]")
         surname.click();
         surname.clear();
-        surname.sendKeys("Shulga");
+        surname.sendKeys("שולגה");
         // Assert that "div-alert" contains text with name + surename
-        WebElement button = wd.findElement(By.cssSelector("button[class='btn']"));
+        WebElement button = wd.findElement(By.cssSelector("button[class='btn']")); //xpath("//button")
         button.click();
+
+
+
         WebElement alert3= wd.findElement(By.cssSelector("#alert"));
         String text3 = alert3.getText();
-        Assert.assertTrue(text3.contains("Nadya Shulga"));
+        Assert.assertTrue(text3.contains("נדיה שולגה"));
 
         //HAPPY END!!!! :)))))
 
@@ -83,6 +95,6 @@ public class Index {
         //print Maria Anders
         System.out.println(wd.findElement(By.cssSelector("tr:nth-child(2) td:nth-child(2)")));
                             wd.findElement(By.xpath("//tr[2]//td[2]")); //xpath
-                            wd.findElement(By.xpath("//td[text() = 'Maria Anderson']")); //xpath
+                          //  wd.findElement(By.xpath("//td[text() = 'Maria Anderson']")); //xpath
     }
 }
